@@ -1,9 +1,15 @@
 const router = require("express").Router();
+const User = require("../models/User")
 
-router.get("/", (req, res)=>{
-    res.send("user auth route")
-})
+//REGISTER
+router.post("/register",  async (req, res)=>{
+    const newUser =  await new User({
+    })
+
+    await user.save();
+    res.send("ok")
+});
 
 
 
-module.exports = router
+module.exports = router;

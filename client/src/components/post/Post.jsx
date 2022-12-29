@@ -1,11 +1,25 @@
 import "./post.css";
 import { MoreVert } from '@mui/icons-material';
-import { Users } from "../../Data";
+//import { Users } from "../../Data";
 import { useState } from "react";
 
 export default function Post({ post }) {
   const [like,setLike] = useState(post.like)
-  const [isLiked,setIsLiked] = useState(false)
+  const [Isliked,setIsLiked] = useState(false)
+  const [user,setUser] = useState({})
+
+
+
+
+  useEffect(() =>{
+    const fetchUser = async () =>{
+      const res = await axios.get(`users/${post.userId}`)
+      setUser(res.data)
+    };
+    fetchPosts()
+    },[] )
+
+
 
   const likeHandler =()=>{
     setLike(isLiked ? like-1 : like+1)
